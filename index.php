@@ -64,7 +64,7 @@
 	$valid_upload = true;
 	$content = htmlspecialchars(trim($_REQUEST["content"]));
 
-	if ($_SESSION["captcha"] != strtoupper($_REQUEST["captcha"]))
+	if (empty($_SESSION["captcha"]) || $_SESSION["captcha"] != strtoupper($_REQUEST["captcha"]))
 	{
 
 		if (!in_array($_REQUEST["api_key"], $api_keys))
