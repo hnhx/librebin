@@ -9,7 +9,7 @@
   </head>
   <body>
   	<h1>Librebin</h1>
-	<a href="https://github.com/hnhx/liberbin">Source & Instances</a>
+	<a href="https://github.com/hnhx/librebin">Source & Instances</a>
 	<a href="./index.php">Upload</a>
 
 	<?php
