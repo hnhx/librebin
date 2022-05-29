@@ -13,6 +13,8 @@
 	<a href="./index.php">Upload</a>
 
 	<?php
+		require("config.php");	
+
 		$content = NULL;
 
 		if (isset($_REQUEST["p"]))
@@ -55,7 +57,7 @@
         }
 
 
-	if (!isset($_REQUEST["content"]) || !isset($_REQUEST["captcha"]))
+	if (!isset($_REQUEST["content"]))
 		die();
 
 	session_start();
@@ -64,8 +66,12 @@
 
 	if ($_SESSION["captcha"] != strtoupper($_REQUEST["captcha"]))
 	{
-		$valid_upload = false;
-		echo "<p>Invalid captcha!</p>";
+
+		if (!in_array($_REQUEST["api_key"], $api_keys))
+		{
+			$valid_upload = false;
+			echo "<p>Invalid captcha!</p>";
+		}
 	}
 
 	$content_len = strlen($content);
